@@ -1,30 +1,3 @@
-# ELK stack (Collect and visulize logs)
-
-### What's inside ELK Stack ?
-1. ElasticSearch Nodes (Cluster of 3 or more nodes )
-2. LogStash (For collectiing logs and pass them too Elasticsearch)
-3. Kibana (For visulizing Logs and data about them)
-4. Elastic Agent + Fleet server(For pusing logs from sourses to Logstash)
-
-
-### How to deploy & Installation ?
-there are several ways to deplpy but we are going to use docker compose with below services 
-
-
-1. elasic nodes (Master Worker, Worker)
-2. Logstash (Single Node)
-2. fleet server (Installed on the rsyslog server or elasticsearch server)
-3. LogStash (Single Node)
-4. Kibana (Single Node)
-5. Elastic Agent 
-
-
-
-
-### Configuration
-
-1. Docker compose of nodes 
-````
 services:
   setup:
     profiles:
@@ -122,22 +95,3 @@ networks:
 
 volumes:
   elasticsearch:
-
-````
-
-###  Log Streams 
-1. waf
-      - a : scrap logs from syslog by elastic agent
-      - b : filebeat
-      - c : push
-2. security
-       
-3. applications
-      - a : scrap logs from syslog by elastic agent
-      - b : filebeat
-      - c : push
-
-
-### Elk Schema 
-![](image.png)
-
