@@ -1,3 +1,60 @@
+# Linux hardening
+
+1. Disable root login over SSH:
+
+              sudo apt update && sudo apt upgrade -y 
+              sudo yum update -y  # RHEL-based
+
+
+2. Set Up a Firewall (iptables/UFW):
+              
+              sudo ufw allow 5601/tcp  # Kibana
+              sudo ufw allow 9200/tcp  # Elasticsearch
+              sudo ufw allow 5044/tcp  # Logstash (Beats)
+              sudo ufw enable
+
+3. For iptables:
+             
+             sudo iptables -A INPUT -p tcp --dport 5601 -s <your-ip> -j ACCEPT
+             sudo iptables -A INPUT -p tcp --dport 9200 -s <your-ip> -j ACCEPT
+             sudo iptables -A INPUT -p tcp --dport 5044 -s <your-ip> -j ACCEPT
+
+# Elasticsearch Security Hardening
+             
+1. Enable Authentication & TLS:
+            
+   1.1. elasticsearch.ym:
+             
+              xpack.security.enabled: true
+
+   1.2. Enable SSL/TLS to encrypt traffic:
+              
+              xpack.security.http.ssl.enabled: true
+              xpack.security.http.ssl.key: /path/to/key.pem
+              xpack.security.http.ssl.certificate: /path/to/cert.pem
+
+    1.3. Limit API Access:
+        
+      1.3.1 Restrict API access using firewall rules or security groups.
+      
+      1.3.2 Disable dangerous features:
+            
+             script.allowed_types: none
+
+    1.4 Kibana Security Hardening:
+    
+    1.5 Run Logstash as a non-root user:
+             
+            sudo usermod -aG logstash elkuser
+
+# File & Process Security
+
+             chmod -R 700 /etc/elasticsearch
+             chmod -R 700 /etc/kibana
+             chmod -R 700 /etc/logstash
+
+
+
 # ELK stack (Collect and visulize logs)
 
 ### What's inside ELK Stack ?
@@ -141,3 +198,5 @@ volumes:
 ### Elk Schema 
 ![](image.png)
 
+
+1) 
