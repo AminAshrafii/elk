@@ -5,7 +5,8 @@ services:
     build:
       context: setup/
       args:
-        ELASTIC_VERSION: 8.17.1
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+
     init: true
     volumes:
       - ./setup/entrypoint.sh:/entrypoint.sh:ro,Z
