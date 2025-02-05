@@ -53,7 +53,7 @@
              chmod -R 700 /etc/kibana
              chmod -R 700 /etc/logstash
 
-# Docker  Installation
+# <span style='color: red;'>Docker  Installation</span>
 
 ## commands
              
@@ -196,7 +196,7 @@ volumes:
 
 ````
 
-###  Log Streams 
+###  <span style='color: red;'>Log Streams</span> 
 1. waf
       - a : scrap logs from syslog by elastic agent
       - b : filebeat
@@ -214,3 +214,15 @@ volumes:
   ![](image.png)
 
 
+1. Data Collection & Formatting (Agent Layer)
+2. Processing with Logstash
+3. Storing & Indexing with Elasticsearch
+4. Visualization with Kibana
+
+
+# Conclusion
+                   
+                   The ELK Stack is a robust solution for log management and analysis. 
+                   By collecting, processing, storing, and visualizing data, it helps 
+                   organizations gain valuable insights, improve system performance, 
+                   and enhance security.
