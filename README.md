@@ -46,7 +46,12 @@
     1.5 Run Logstash as a non-root user:
              
             sudo usermod -aG logstash elkuser
+    1.6 edit vim /et/sysctl.conf
+             
+            vm.max_map_count = 262144
+    1.7 set permistion :
 
+            chown -R 1001:1001 bitnami-elastic         
 # File & Process Security
 
              chmod -R 700 /etc/elasticsearch
